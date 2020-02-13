@@ -1,1 +1,3 @@
-# SoftwareDev2020-Desktop-
+# SoftwareDev-2020-Desktop
+
+## Building
