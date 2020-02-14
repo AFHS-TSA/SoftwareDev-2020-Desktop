@@ -1,7 +1,5 @@
 import QtQuick 2.6
 
-import lib 1.0 as Lib
-
 Rectangle {
     id: root;
 
@@ -10,22 +8,24 @@ Rectangle {
     Column {
         anchors.centerIn: parent;
 
-        Lib.Icon {
-            anchors.horizontalCenter: parent.horizontalCenter;
-            type: types.fa_compass;
-            pointSize: 80;
-        }
-
-        Lib.Label {
+        Text {
+            color: "#ffffff"
+            text: "Qml2Puppet 1.0.0"
             font.pointSize: 24;
             anchors.horizontalCenter: parent.horizontalCenter;
-            text: Qt.application.name + " " + Qt.application.version;
         }
 
-        Lib.Label {
+        Text {
+            color: "#ffffff"
             font.pointSize: 12;
             anchors.horizontalCenter: parent.horizontalCenter;
             text: Qt.application.organization + " " + Qt.application.domain;
         }
     }
 }
+
+/*##^##
+Designer {
+    D{i:0;autoSize:true;height:480;width:640}
+}
+##^##*/
