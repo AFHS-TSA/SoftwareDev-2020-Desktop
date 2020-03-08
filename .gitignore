@@ -6,3 +6,6 @@ doc/doxygen/output/
 *.pyc
 *.DS_Store
 CMakeLists.txt.user
+*.swo
+*.swp
+*~

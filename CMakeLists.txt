@@ -44,7 +44,7 @@ set(TEMPLATE_DOMAIN "AFHS-TSA" CACHE STRING "Domain")
 # Qt
 # ******************************************************************************
 set(TEMPLATE_QT_VERSION "5.14.1" CACHE STRING "Qt Version")
-set(TEMPLATE_QT_MODULES Core Gui Widgets Quick Qml Concurrent Network DBus PrintSupport)
+Set(TEMPLATE_QT_MODULES Core Gui Widgets Quick QuickControls2 Qml Concurrent Network DBus PrintSupport)
 
 find_package(Qt5 ${TEMPLATE_QT_VERSION} EXACT CONFIG REQUIRED ${TEMPLATE_QT_MODULES})
 set(CMAKE_AUTOMOC true)
@@ -126,4 +126,4 @@ endif()
 
 # link
 # ******************************************************************************
-target_link_libraries(${PROJECT_NAME} PUBLIC Qt5::Core PUBLIC Qt5::Widgets PUBLIC Qt5::Gui PUBLIC Qt5::Quick PUBLIC Qt5::Qml PUBLIC Qt5::Concurrent)
+target_link_libraries(${PROJECT_NAME} PUBLIC Qt5::Core PUBLIC Qt5::Widgets PUBLIC Qt5::Gui PUBLIC Qt5::Quick PUBLIC Qt5::QuickControls2 PUBLIC Qt5::Qml PUBLIC Qt5::Concurrent)

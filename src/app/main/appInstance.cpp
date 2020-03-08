@@ -8,8 +8,10 @@
 #include <QApplication>
 #include <QQmlContext>
 #include <QQmlEngine>
+#include <QStyle>
 #include <QDirIterator>
 #include <QDir>
+#include <QQuickStyle>
 
 namespace app {
 
@@ -23,6 +25,7 @@ namespace app {
         QApplication::setOrganizationDomain(Meta::orgDomain);
         QApplication::setApplicationName(Meta::appName);
         QApplication::setApplicationVersion(Meta::versionString);
+        QQuickStyle::setStyle("Material");
 
         auto path = QDir(QGuiApplication::applicationDirPath());
 
