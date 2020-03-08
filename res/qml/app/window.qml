@@ -1,4 +1,7 @@
 import QtQuick 2.6
+import QtQuick.Controls 1.6
+
+import "../lib/requests.js" as Requests
 
 Rectangle {
     id: root;
@@ -10,18 +13,49 @@ Rectangle {
 
         Text {
             color: "#ffffff"
-            text: "Qml2Puppet 1.0.0"
+            text: "Application"
             font.pointSize: 24;
             anchors.horizontalCenter: parent.horizontalCenter;
         }
 
         Text {
+            id: requestReturn
             color: "#ffffff"
-            font.pointSize: 12;
-            anchors.horizontalCenter: parent.horizontalCenter;
-            text: Qt.application.organization + " " + Qt.application.domain;
+            text: "Request Return"
+            anchors.horizontalCenter: parent.horizontalCenter
+            font.pointSize: 12
         }
     }
+
+    Button {
+        id: requestButton
+        x: 274
+        y: 284
+        text: qsTr("Make Request")
+        onClicked: {
+            Requests.post('http://127.0.0.1:8000/user/login',
+                          '{"username": "jason","password": "jasonpassword"}',
+                          function(res) {
+
+                console.log(res.responseText);
+
+//                var resObject = eval('new Object(' + res.responseText + ')');
+
+                requestReturn.text = res.responseText;
+            });
+        }
+    }
+
+//    function request(url, callback) {
+//        var xhr = new XMLHttpRequest();
+//        xhr.onreadystatechange = (function(myxhr) {
+//            return function() {
+//                callback(myxhr);
+//            }
+//        })(xhr);
+//        xhr.open('POST', url, true);
+//        xhr.send('');
+//    }
 }
 
 /*##^##
