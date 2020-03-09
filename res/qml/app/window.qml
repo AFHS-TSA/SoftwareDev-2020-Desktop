@@ -10,7 +10,7 @@ Rectangle {
     width: 1422
     height: 801
     Material.theme: Material.dark
-    Material.accent: Material.purple
+    Material.accent: Material.blue
     color: "#343232"
     visible: true
 
@@ -20,7 +20,7 @@ Rectangle {
         y: 1
         width: 1422
         height: 800
-        currentIndex: 1
+        currentIndex: 0
 
         Item {
             id: loginPage
@@ -34,15 +34,20 @@ Rectangle {
                 color: "#6a6a6a"
                 radius: 20
                 opacity: 0.3
+                Material.elevation: 10
             }
 
             TextField {
+                placeholderTextColor: "white"
                 id: username
                 x: 611
                 y: 319
-                text: qsTr("Username")
+                width: 200
+                height: 40
+                placeholderText: qsTr("Username")
                 font.family: "Verdana"
                 font.wordSpacing: 0
+                Material.accent: "#009eff"
 
             }
 
@@ -50,9 +55,13 @@ Rectangle {
                 id: password
                 x: 611
                 y: 397
-                text: qsTr("Password")
+                width: 200
+                height: 40
+                placeholderTextColor: "white"
+                placeholderText: qsTr("Password")
                 font.family: "Verdana"
                 visible: true
+                Material.accent: "#009eff"
             }
 
             Image {
@@ -68,12 +77,14 @@ Rectangle {
             RoundButton {
                 id: logInButton
                 x: 665
-                y: 460
+                y: 467
                 width: 93
-                height: 49
+                height: 42
                 text: "Log In"
                 onClicked: {stackLayout.currentIndex = 2}
-                Material.elevation: 6
+                Material.elevation: 15
+                Material.background: "#009eff"
+                Material.foreground: "white"
                 OpacityAnimator {
                     target: username;
                     from: 0;
@@ -85,13 +96,16 @@ Rectangle {
 
             RoundButton {
                 id: signUpHere
-                x: 569
-                y: 605
-                width: 284
+                x: 556
+                y: 601
+                width: 311
                 height: 40
                 text: "Don't have an account? Sign up here!"
                 onClicked: {stackLayout.currentIndex = 1}
                 Material.elevation: 6
+                Material.background: "#009eff"
+                Material.foreground: "white"
+
                 OpacityAnimator {
                     target: username;
                     from: 0;
@@ -122,9 +136,12 @@ Rectangle {
                 id: username1
                 x: 611
                 y: 253
-                text: qsTr("Username")
+                width: 200
+                height: 40
+                placeholderText: qsTr("Username")
                 horizontalAlignment: Text.AlignLeft
                 font.wordSpacing: 0
+                Material.accent: "#009eff"
             }
 
 
@@ -144,21 +161,30 @@ Rectangle {
                 id: password1
                 x: 611
                 y: 331
-                text: qsTr("E-mail")
+                width: 200
+                height: 40
+                placeholderText: qsTr("E-mail")
+                Material.accent: "#009eff"
             }
 
             TextField {
                 id: password2
                 x: 611
                 y: 407
+                width: 200
+                height: 40
                 text: qsTr("Password")
+                Material.accent: "#009eff"
             }
 
             TextField {
                 id: password3
                 x: 611
                 y: 483
+                width: 200
+                height: 40
                 text: qsTr("Confirm Password")
+                Material.accent: "#009eff"
             }
 
             RoundButton {
@@ -168,6 +194,7 @@ Rectangle {
                 width: 91
                 height: 40
                 text: "Sign Up"
+                transformOrigin: Item.Center
                 onClicked: {stackLayout.currentIndex = 0}
             }
         }
@@ -222,55 +249,6 @@ Rectangle {
                         y: 81
                         width: 1048
                         height: 553
-
-                        ListView {
-                            id: listView
-                            x: 340
-                            y: 220
-                            width: 1048
-                            height: 553
-                            model: ListModel {
-                                ListElement {
-                                    name: "Grey"
-                                    colorCode: "grey"
-                                }
-
-                                ListElement {
-                                    name: "Red"
-                                    colorCode: "red"
-                                }
-
-                                ListElement {
-                                    name: "Blue"
-                                    colorCode: "blue"
-                                }
-
-                                ListElement {
-                                    name: "Green"
-                                    colorCode: "green"
-                                }
-                            }
-                            delegate: Item {
-                                x: 5
-                                width: 80
-                                height: 40
-                                Row {
-                                    id: row1
-                                    spacing: 10
-                                    Rectangle {
-                                        width: 40
-                                        height: 40
-                                        color: colorCode
-                                    }
-
-                                    Text {
-                                        text: name
-                                        font.bold: true
-                                        anchors.verticalCenter: parent.verticalCenter
-                                    }
-                                }
-                            }
-                        }
                     }
 
                     Button {
@@ -319,7 +297,9 @@ Rectangle {
                         y: 28
                         width: 1000
                         height: 40
-                        text: qsTr("Text Field")
+                        placeholderText: qsTr("Search")
+                        Material.accent: "#009eff"
+                        Material.foreground: "white"
                     }
 
                     Image {
