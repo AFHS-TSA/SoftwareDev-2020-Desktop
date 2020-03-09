@@ -20,7 +20,7 @@ Rectangle {
         y: 1
         width: 1422
         height: 800
-        currentIndex: 0
+        currentIndex: 2
 
         Item {
             id: loginPage
@@ -142,6 +142,8 @@ Rectangle {
                 horizontalAlignment: Text.AlignLeft
                 font.wordSpacing: 0
                 Material.accent: "#009eff"
+                Material.foreground: "white"
+                placeholderTextColor: "white"
             }
 
 
@@ -165,6 +167,8 @@ Rectangle {
                 height: 40
                 placeholderText: qsTr("E-mail")
                 Material.accent: "#009eff"
+                Material.foreground: "white"
+                placeholderTextColor: "white"
             }
 
             TextField {
@@ -173,8 +177,10 @@ Rectangle {
                 y: 407
                 width: 200
                 height: 40
-                text: qsTr("Password")
+                placeholderText: qsTr("Password")
                 Material.accent: "#009eff"
+                placeholderTextColor: "white"
+                Material.foreground:"white"
             }
 
             TextField {
@@ -183,12 +189,14 @@ Rectangle {
                 y: 483
                 width: 200
                 height: 40
-                text: qsTr("Confirm Password")
+                placeholderText: qsTr("Confirm Password")
                 Material.accent: "#009eff"
+                placeholderTextColor: "white"
+                Material.foreground: "white"
             }
 
             RoundButton {
-                id: roundButton2
+                id: signUpBtn
                 x: 666
                 y: 565
                 width: 91
@@ -196,41 +204,37 @@ Rectangle {
                 text: "Sign Up"
                 transformOrigin: Item.Center
                 onClicked: {stackLayout.currentIndex = 0}
+                Material.background: "#009eff"
             }
         }
 
         Item {
+
+            Button {
+                id: competitons
+                x: 725
+                y: 34
+                width: 658
+                height: 72
+                text: qsTr("COMPETITIONS")
+                font.family: "Ubuntu"
+                font.pointSize: 20
+                Material.accent: "white"
+                Material.background: "#009eff"
+            }
+
             Button {
                 id: projects
                 x: 39
                 y: 34
-                width: 464
+                width: 692
                 height: 72
                 text: qsTr("PROJECTS")
                 font.pointSize: 20
-                font.family: "Verdana"
-            }
+                font.family: "Ubuntu"
+                Material.accent: "white"
+                Material.background: "#009eff"
 
-            Button {
-                id: home
-                x: 509
-                y: 34
-                width: 404
-                height: 72
-                text: qsTr("HOME")
-                font.pointSize: 20
-                font.family: "Verdana"
-            }
-
-            Button {
-                id: competitons
-                x: 919
-                y: 34
-                width: 464
-                height: 72
-                text: qsTr("COMPETITIONS")
-                font.family: "Verdana"
-                font.pointSize: 20
             }
 
             StackLayout {
@@ -249,19 +253,49 @@ Rectangle {
                         y: 81
                         width: 1048
                         height: 553
+                        clip: true
+                        ScrollBar.vertical.policy: ScrollBar.AlwaysOn
+
+                        ListView {
+                                model: 20
+                                Material.foreground: "white"
+                                delegate: Component{
+                                    Item{
+
+                                        width: 1020
+                                        height: 180
+                                        Rectangle{
+                                            width: 1020
+                                            height: 180
+                                            radius: 30
+                                            color: "grey"
+                                            Material.foreground: "white"
+                                            Text {
+                                                id: name
+                                                text: qsTr("Project " + index)
+                                                Material.foreground: "white"
+                                            }
+
+
+                                        }
+                                    }
+                                }
+                        }
                     }
 
                     Button {
-                        id: button
+                        id: editProfile
                         x: 17
                         y: 412
                         width: 234
                         height: 70
                         text: qsTr("Edit Profile")
+                        flat: false
+                        Material.elevation: 10
                     }
 
                     Label {
-                        id: label
+                        id: profile
                         x: 17
                         y: 205
                         width: 234
@@ -274,25 +308,28 @@ Rectangle {
                     }
 
                     Button {
-                        id: button1
+                        id: addProj
                         x: 17
                         y: 488
                         width: 234
                         height: 70
                         text: qsTr("Add Project +")
+                        Material.elevation: 10
                     }
 
                     Button {
-                        id: button2
+                        id: settings
                         x: 17
                         y: 564
                         width: 234
                         height: 70
                         text: qsTr("Settings")
+                        Material.elevation: 1000
+                        //Material.rippleColor: "#009eff"
                     }
 
                     TextField {
-                        id: textField
+                        id: searchBar
                         x: 296
                         y: 28
                         width: 1000
@@ -303,23 +340,21 @@ Rectangle {
                     }
 
                     Image {
-                        id: image2
+                        id: avIcon
                         x: 36
                         y: 18
                         width: 197
-                        height: 166
+                        height: 163
                         source: "../lib/loginAvatar.png"
                         fillMode: Image.PreserveAspectFit
+                        Material.elevation: 7
                     }
 
-                    Image {
-                        id: searchBtn
-                        x: 1302
-                        y: 25
-                        width: 42
-                        height: 47
-                        source: "qrc:/qtquickplugin/images/template_image.png"
-                        fillMode: Image.PreserveAspectFit
+                    RoundButton {
+                        id: roundButton
+                        x: 1304
+                        y: 28
+                        text: "GO"
                     }
 
                 }
@@ -333,6 +368,7 @@ Rectangle {
                 }
 
             }
+
         }
 
     }
